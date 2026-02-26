@@ -103,6 +103,7 @@ fn run(options: &Options, h: &mut Handler) {
     //case::<ParkingLotRwLockBTreeMapTable<u64>>("parking_lot::RwLock<BTreeMap>", options, h);
     case::<CHashMapTable<u64>>("CHashMap", options, h);
     case::<CrossbeamSkipMapTable<u64>>("CrossbeamSkipMap", options, h);
+    case::<PapayaTable<u64, RandomState>>("Papaya", options, h);
 
     match options.hasher {
         HasherKind::Std => run_hasher_variant::<RandomState>(options, h),
