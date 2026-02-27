@@ -26,7 +26,7 @@ serde = { version = "1.0.185", features = ["derive"] }
 plotters = "0.3.5"
 scc = "2.0.3"
 papaya = "0.2.3"
-pinhash = "0.1.0"
+pinhash = "0.2.0"
 
 [profile.release]
 codegen-units = 1

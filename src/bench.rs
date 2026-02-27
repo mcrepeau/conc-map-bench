@@ -104,7 +104,6 @@ fn run(options: &Options, h: &mut Handler) {
     case::<CHashMapTable<u64>>("CHashMap", options, h);
     case::<CrossbeamSkipMapTable<u64>>("CrossbeamSkipMap", options, h);
     case::<PapayaTable<u64, RandomState>>("Papaya", options, h);
-    case::<PinHashTable<u64>>("PinHash", options, h);
 
     match options.hasher {
         HasherKind::Std => run_hasher_variant::<RandomState>(options, h),
@@ -123,6 +122,7 @@ where
     case::<EvmapTable<u64, H>>("Evmap", options, h);
     case::<ContrieTable<u64, H>>("Contrie", options, h);
     case::<SccMapTable<u64, H>>("SccMap", options, h);
+    case::<PinHashTable<u64, H>>("PinHash", options, h);
 }
 
 pub fn bench(options: &Options) {
