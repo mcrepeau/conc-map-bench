@@ -2,7 +2,8 @@ pub use self::{
     btreemap::ParkingLotRwLockBTreeMapTable, btreemap::StdRwLockBTreeMapTable,
     chashmap::CHashMapTable, contrie::ContrieTable, crossbeam_skiplist::CrossbeamSkipMapTable,
     dashmap::DashMapTable, evmap::EvmapTable, flurry::FlurryTable, papaya::PapayaTable,
-    scc::SccMapTable, std::ParkingLotRwLockStdHashMapTable, std::StdRwLockStdHashMapTable,
+    pinhash::PinHashTable, scc::SccMapTable, std::ParkingLotRwLockStdHashMapTable,
+    std::StdRwLockStdHashMapTable,
 };
 
 mod btreemap;
@@ -13,6 +14,7 @@ mod dashmap;
 mod evmap;
 mod flurry;
 mod papaya;
+mod pinhash;
 mod scc;
 mod std;
 
