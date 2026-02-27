@@ -6,11 +6,9 @@ use bustle::*;
 use super::Value;
 
 #[derive(Clone)]
-pub struct PinHashTable<K, H> {
-    map: Arc<pinhash::HashMap<K, Value, H>>,
-}
+pub struct PinHashTable<K, H>(Arc<pinhash::HashMap<K, Value, H>>);
 
-impl<K,H> Collection for PinHashTable<K,H>
+impl<K, H> Collection for PinHashTable<K, H>
 where
     K: Send + Sync + From<u64> + Copy + 'static + Hash + Eq,
     H: BuildHasher + Default + Send + Sync + 'static + Clone,
@@ -18,12 +16,10 @@ where
     type Handle = Self;
 
     fn with_capacity(capacity: usize) -> Self {
-        Self {
-            map: Arc::new(pinhash::HashMap::with_capacity_and_hasher(
-                capacity,
-                H::default(),
-            ))
-        }
+        Self(Arc::new(pinhash::HashMap::with_capacity_and_hasher(
+            capacity,
+            H::default(),
+        )))
     }
 
     fn pin(&self) -> Self::Handle {
@@ -39,18 +35,18 @@ where
     type Key = K;
 
     fn get(&mut self, key: &Self::Key) -> bool {
-        self.map.get(key).is_some()
+        self.0.get(key).is_some()
     }
 
     fn insert(&mut self, key: &Self::Key) -> bool {
-        self.map.insert(*key, 0).is_ok()
+        self.0.insert(*key, 0).is_ok()
     }
 
     fn remove(&mut self, key: &Self::Key) -> bool {
-        self.map.remove(key)
+        self.0.remove(key)
     }
 
     fn update(&mut self, key: &Self::Key) -> bool {
-        self.map.modify(key, |v| *v += 1)
+        self.0.modify(key, |v| *v += 1)
     }
 }
