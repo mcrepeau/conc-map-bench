@@ -101,9 +101,8 @@ where
 fn run(options: &Options, h: &mut Handler) {
     //case::<StdRwLockBTreeMapTable<u64>>("std:sync::RwLock<BTreeMap>", options, h);
     //case::<ParkingLotRwLockBTreeMapTable<u64>>("parking_lot::RwLock<BTreeMap>", options, h);
-    case::<CHashMapTable<u64>>("CHashMap", options, h);
-    case::<CrossbeamSkipMapTable<u64>>("CrossbeamSkipMap", options, h);
-    case::<PapayaTable<u64, RandomState>>("Papaya", options, h);
+    //case::<CHashMapTable<u64>>("CHashMap", options, h);
+    //case::<CrossbeamSkipMapTable<u64>>("CrossbeamSkipMap", options, h);
 
     match options.hasher {
         HasherKind::Std => run_hasher_variant::<RandomState>(options, h),
@@ -119,10 +118,11 @@ where
     //case::<ParkingLotRwLockStdHashMapTable<u64, H>>("parking_lot::RwLock<StdHashMap>", options, h);
     case::<DashMapTable<u64, H>>("DashMap", options, h);
     case::<FlurryTable<u64, H>>("Flurry", options, h);
-    case::<EvmapTable<u64, H>>("Evmap", options, h);
+    //case::<EvmapTable<u64, H>>("Evmap", options, h);
     case::<ContrieTable<u64, H>>("Contrie", options, h);
-    case::<SccMapTable<u64, H>>("SccMap", options, h);
+    //case::<SccMapTable<u64, H>>("SccMap", options, h);
     case::<PinHashTable<u64, H>>("PinHash", options, h);
+    case::<PapayaTable<u64, H>>("Papaya", options, h);
 }
 
 pub fn bench(options: &Options) {

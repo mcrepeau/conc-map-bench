@@ -39,7 +39,7 @@ where
     }
 
     fn insert(&mut self, key: &Self::Key) -> bool {
-        self.0.insert(*key, 0).is_ok()
+        self.0.insert(*key, 0)
     }
 
     fn remove(&mut self, key: &Self::Key) -> bool {
