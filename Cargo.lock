@@ -33,6 +33,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "anchormap"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6b387456be0e962926dea7cb914789fa2722e299b4872512afc6836b4e896bbc"
+dependencies = [
+ "ahash 0.8.11",
+ "parking_lot 0.12.3",
+]
+
+[[package]]
 name = "android-tzdata"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -191,6 +201,7 @@ name = "conc-map-bench"
 version = "0.1.0"
 dependencies = [
  "ahash 0.8.11",
+ "anchormap",
  "bustle",
  "chashmap",
  "contrie",
@@ -204,7 +215,6 @@ dependencies = [
  "num_cpus",
  "papaya",
  "parking_lot 0.12.3",
- "pinhash",
  "plotters",
  "scc",
  "seize 0.2.5",
@@ -880,16 +890,6 @@ name = "pin-project-lite"
 version = "0.2.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bda66fc9667c18cb2758a2ac84d1167245054bcf85d5d1aaa6923f45801bdd02"
-
-[[package]]
-name = "pinhash"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d3ae7b2f9575a2b7b2f8ece9f0b78d7a149a12caabb73c46ee5034e1424ec7fa"
-dependencies = [
- "ahash 0.8.11",
- "parking_lot 0.12.3",
-]
 
 [[package]]
 name = "pkg-config"

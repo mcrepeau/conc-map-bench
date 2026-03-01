@@ -121,7 +121,7 @@ where
     //case::<EvmapTable<u64, H>>("Evmap", options, h);
     case::<ContrieTable<u64, H>>("Contrie", options, h);
     //case::<SccMapTable<u64, H>>("SccMap", options, h);
-    case::<PinHashTable<u64, H>>("PinHash", options, h);
+    case::<AnchormapTable<u64, H>>("Anchormap", options, h);
     case::<PapayaTable<u64, H>>("Papaya", options, h);
 }
 

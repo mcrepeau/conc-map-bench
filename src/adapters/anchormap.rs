@@ -6,9 +6,9 @@ use bustle::*;
 use super::Value;
 
 #[derive(Clone)]
-pub struct PinHashTable<K, H>(Arc<pinhash::HashMap<K, Value, H>>);
+pub struct AnchormapTable<K, H>(Arc<anchormap::HashMap<K, Value, H>>);
 
-impl<K, H> Collection for PinHashTable<K, H>
+impl<K, H> Collection for AnchormapTable<K, H>
 where
     K: Send + Sync + From<u64> + Copy + 'static + Hash + Eq,
     H: BuildHasher + Default + Send + Sync + 'static + Clone,
@@ -16,7 +16,7 @@ where
     type Handle = Self;
 
     fn with_capacity(capacity: usize) -> Self {
-        Self(Arc::new(pinhash::HashMap::with_capacity_and_hasher(
+        Self(Arc::new(anchormap::HashMap::with_capacity_and_hasher(
             capacity,
             H::default(),
         )))
@@ -27,7 +27,7 @@ where
     }
 }
 
-impl<K, H> CollectionHandle for PinHashTable<K, H>
+impl<K, H> CollectionHandle for AnchormapTable<K, H>
 where
     K: Send + Sync + From<u64> + Copy + 'static + Hash + Eq,
     H: BuildHasher + Default + Send + Sync + 'static + Clone,
